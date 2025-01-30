@@ -17,12 +17,14 @@ try {
                 password : bcryptedPassword.toString(),
             })
     
-            console.log(newUser);
-           
-         
-            res.cookie('token', token, { httpOnly: true , sameSite: 'Strict' })
-         console.log(token);
-           res.cookie('token', token);
+            const signupToken = await jwt.sign({email:email,id: newUser._id}, "prakash");
+        //  console.log(signupToken);
+         res.cookie('signupToken', signupToken, {
+            httpOnly: true, 
+            secure: false,  
+            sameSite: 'lax',
+            maxAge: 3600000 
+        });
            res.status(201).json({message: 'User created successfully'});
 } catch (error) {
     console.error(error.message)

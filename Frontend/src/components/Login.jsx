@@ -7,7 +7,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLogin, setIsLogin] = useState(true);
 
-  // Handle login request
+ //login requist
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage('');
@@ -24,13 +24,14 @@ const Login = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
+        credentials: 'include', 
       });
 
       const data = await response.json();
 
       if (response.ok) {
         alert('Login successful!');
-        // Handle successful login (e.g., redirect to dashboard or home)
+        console.log('Cookies should be set in the browser now.');
       } else {
         setErrorMessage(data.message || 'Login failed. Please try again.');
       }
@@ -39,7 +40,7 @@ const Login = () => {
     }
   };
 
-  // Handle sign up request
+  //  sign-up request
   const handleSignUp = async (e) => {
     e.preventDefault();
     setErrorMessage('');
@@ -50,12 +51,13 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/signup', { // Ensure the correct endpoint
+      const response = await fetch('http://localhost:3000/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, email, password }),  // Include username in the request
+        body: JSON.stringify({ username, email, password }),
+        credentials: 'include', 
       });
 
       const data = await response.json();
@@ -77,9 +79,9 @@ const Login = () => {
           {isLogin ? 'Login' : 'Sign Up'}
         </h2>
 
-        <div className="mb-4">
-          {isLogin ? null : (
-            <>
+        <form onSubmit={isLogin ? handleLogin : handleSignUp} className="space-y-4">
+          {!isLogin && (
+            <div className="mb-4">
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                 Username:
               </label>
@@ -90,62 +92,58 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter your name"
                 required
-                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
+                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
               />
-            </>
+            </div>
           )}
 
-          <form onSubmit={isLogin ? handleLogin : handleSignUp} className="space-y-4">
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
-              />
-            </div>
-
-            {errorMessage && (
-              <div className="text-red-500 text-sm mb-4">{errorMessage}</div>
-            )}
-
-            <button
-              type="submit"
-              className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"
-            >
-              {isLogin ? 'Login' : 'Sign Up'}
-            </button>
-          </form>
-
-          <div className="mt-6 text-center">
-            <button
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-blue-500 hover:text-blue-600 focus:outline-none"
-            >
-              {isLogin ? "Don't have an account? Sign Up" : 'Already have an account? Login'}
-            </button>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email:
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
+            />
           </div>
+
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
+            />
+          </div>
+
+          {errorMessage && <div className="text-red-500 text-sm mb-4">{errorMessage}</div>}
+
+          <button
+            type="submit"
+            className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600"
+          >
+            {isLogin ? 'Login' : 'Sign Up'}
+          </button>
+        </form>
+
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => setIsLogin(!isLogin)}
+            className="text-blue-500 hover:text-blue-600"
+          >
+            {isLogin ? "Don't have an account? Sign Up" : 'Already have an account? Login'}
+          </button>
         </div>
       </div>
     </div>
