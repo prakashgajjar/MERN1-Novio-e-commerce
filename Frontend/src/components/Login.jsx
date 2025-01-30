@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -30,8 +32,8 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert('Login successful!');
         console.log('Cookies should be set in the browser now.');
+       await navigate('/home');
       } else {
         setErrorMessage(data.message || 'Login failed. Please try again.');
       }
@@ -63,6 +65,7 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
+        navigate('/home');
         alert('Sign Up successful!');
       } else {
         setErrorMessage(data.message || 'Sign Up failed. Please try again.');
