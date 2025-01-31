@@ -4,7 +4,7 @@
   "description": "Novio is a website for clothes. ",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "author": "prakash suthar",
   "license": "ISC",

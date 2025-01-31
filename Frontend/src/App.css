@@ -1,3 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .social-icon {
+    @apply text-gray-400 text-2xl transition-transform transform hover:scale-110 hover:text-white;
+  }
+  .bg-container {
+    background-image: url('/images/DOUBLESIDE/default-bg.jpg');
+    transition: background-image 0.5s ease-in-out;
+  }
+  
+  .bg-container:hover {
+    background-image: url('/images/DOUBLESIDE/1.avif');
+  }  

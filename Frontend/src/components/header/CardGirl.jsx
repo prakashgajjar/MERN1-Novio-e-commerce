@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const CardGirl = () => {
+export const CardGirl = ({imgUrl}) => {
     return (
         <>
             <div className='flex flex-col'>
                 <div className='flex justify-center flex-col  h-[700px]'>
                     <div className=''>
-                        <img className='w-[550px] h-[650px]' src="public\images\1.avif" alt="" srcset="" />
+                        <img className='w-[550px] h-[650px]' 
+                        src={imgUrl} alt="" srcset="" />
                     </div>
                     <div className='flex justify-center gap-6 mt-4'>
                         <h1 className='text-xl font-semibold' style={{ letterSpacing: 12 }}>DRESSES</h1>

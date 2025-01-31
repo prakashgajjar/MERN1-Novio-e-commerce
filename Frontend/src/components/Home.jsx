@@ -5,9 +5,11 @@ import Video from './header/video'
 import CardCollection from './header/CardCollection'
 import SmallText from './componets/SmallText'
 import MidBanner from './componets/MidBanner'
+import CardCollectionOfBgChnager from './componets/CardCollectionOfBgChnager'
+import Footer from './footer/Footer'
 const Home = () => {
   return (
-    <div>
+    <div className='overflow-hidden'>
       <Navbar />
       <Text />
       <Video />
@@ -15,6 +17,8 @@ const Home = () => {
       <CardCollection />
       <MidBanner />
       <SmallText name = "Good Things Never Last"/>
+      <CardCollectionOfBgChnager />
+      <Footer/> 
 
     </div>
   )

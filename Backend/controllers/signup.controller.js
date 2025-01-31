@@ -1,6 +1,7 @@
 const jwt  = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.models.js');
+const express = require('express');
 
 const signupUser = async (req,res)=>{
     const { username, email, password } = req.body;
@@ -25,7 +26,7 @@ try {
             sameSite: 'lax',
             maxAge: 3600000 
         });
-           res.status(201).json({message: 'User created successfully'});
+           res.status(201).json({message: 'User created successfully'})
 } catch (error) {
     console.error(error.message)
 }

@@ -15,9 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/',home);
+
 app.use('/login',login);
 app.use('/signup',signup);
+app.use('/home',home);
 
 
 const PORT = process.env.PORT || 3000;
