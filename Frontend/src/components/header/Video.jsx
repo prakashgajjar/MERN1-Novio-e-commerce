@@ -1,35 +1,29 @@
 import { useRef, useState } from 'react';
 
 const VideoPlayer = () => {
-  const videoRef = useRef(null); 
-  const [isPlaying, setIsPlaying] = useState(false); 
-
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   const handleVideoClick = () => {
-    if (videoRef.current.paused) {
-      videoRef.current.play(); 
-      setIsPlaying(true);  
-    } else {
-      videoRef.current.pause();  
-      setIsPlaying(false); 
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
     }
   };
 
   return (
-    <div className=''>
+    <div className="w-screen h-screen">
       <video
         ref={videoRef}
-        className="w-screen h-screen cover"
+        className="w-screen h-screen object-cover"
         src="/video/1.mp4"
-        onClick={handleVideoClick} 
+        autoPlay
+        loop
+        muted={isMuted}
+        onClick={handleVideoClick}
       />
-   
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl">
-        {isPlaying ? 'Playing' : 'Paused'}
-      </div>
     </div>
   );
 };
 
 export default VideoPlayer;
-

@@ -26,7 +26,7 @@ const CardCollectionOfBgChnager = () => {
     <BgChangeCard normalIMG="/images/DOUBLESIDE/14.avif" hoverIMG="/images/DOUBLESIDE/14.1.avif"/>
     <BgChangeCard normalIMG="/images/DOUBLESIDE/15.avif" hoverIMG="/images/DOUBLESIDE/15.1.avif"/>
     <BgChangeCard normalIMG="/images/DOUBLESIDE/16.avif" hoverIMG="/images/DOUBLESIDE/16.1.avif"/>
-    <BgChangeCard normalIMG="/images/DOUBLESIDE/17.avif" hoverIMG="/images/DOUBLESIDE/17.1.avif"/>
+    <BgChangeCard normalIMG="/images/DOUBLESIDE/17.1.avif" hoverIMG="/images/DOUBLESIDE/17.avif"/>
     </div>
 </div>
 
