@@ -14,7 +14,7 @@ const BgChangeCard = ({normalIMG , hoverIMG}) => {
                  src={bgUrl} 
                  onMouseOver={()=>setBgUrl(hoverImage)}
                  onMouseLeave={()=>setBgUrl(normalImage)}
-                 alt="" srcset="" />
+                 alt="" />
                
             </div>
             <div className='-mt-8 ml-64  relative'>

@@ -1,31 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState , useRef } from 'react';
+import Novio from '../navbar/Novio';
+import Navigation from '../navbar/Navigation';
+import Icons from '../navbar/Icons';
 
 const Navbar = () => {
- 
-    return (
-        <>
-            <div>
-                <nav className='flex justify-between h-12  m-3 mt-5'>
-                    <div className='ml-2' id='Novio'>
-                        <h1 className='text-black text-4xl font-bold'>Novio</h1>
-                    </div>
-                    <div>
-                        <ul className='flex gap-12 text-sm mr-5 '>
-                            <li>SHOP</li>
-                            <li>ABOUT</li>
-                            <li>CONTACT</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 16h14" />
-                            </svg>
-                            </li>
-                            <li><img className='w-5 h-5' src="/icons/shopping-cart.png" alt="Shopping Cart Icon" /></li>
-                        </ul>
-                    </div>
-                </nav>
+  const [scroll, setScroll] = useState(true);
+  const NavigationRef = useRef(null);
 
-            </div>
-        </>
-    )
-}
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log(window.scrollY);
+      if (window.scrollY > 50) {
+        setScroll(false);
+      } else {
+        setScroll(true);
+      }
+    };
 
-export default Navbar
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 w-full bg-transparent ">
+      <nav className="flex justify-between items-center h-16 px-6">
+        <Novio /> 
+       <div className='flex '>
+       <div ref={NavigationRef} className={`${scroll ? "block" : "hidden"}`}>
+
+       <Navigation />
+       </div>
+       <div className=''>
+       <Icons /></div> 
+       </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;

@@ -7,7 +7,7 @@ export const CardGirl = ({imgUrl}) => {
                 <div className='flex justify-center flex-col  h-[700px]'>
                     <div className=''>
                         <img className='w-[550px] h-[650px]' 
-                        src={imgUrl} alt="" srcset="" />
+                        src={imgUrl} alt="" srcSet="" />
                     </div>
                     <div className='flex justify-center gap-6 mt-4'>
                         <h1 className='text-xl font-semibold' style={{ letterSpacing: 12 }}>DRESSES</h1>
@@ -16,7 +16,7 @@ export const CardGirl = ({imgUrl}) => {
                 </div>
                 <div className='flex justify-center mt-4'>
                     <svg width="300" height="80" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="0" y1="10" x2="300" y2="10" stroke="black" stroke-width="2" />
+                        <line x1="0" y1="10" x2="300" y2="10" stroke="black"  />
                     </svg>
 
                 </div>
