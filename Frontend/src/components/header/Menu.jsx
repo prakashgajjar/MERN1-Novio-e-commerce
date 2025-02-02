@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import gsap from "gsap";
 
 const Menu = () => {
-    const { show } = useContext(ThemeContext);
+    const { show ,setShow } = useContext(ThemeContext);
     const menuRef = useRef(null);
 
 
@@ -53,14 +53,15 @@ const Menu = () => {
             <div className="flex justify-end absolute right-8 bottom-6 items-end flex-col">
                 <nav>
                     <ul className="text-8xl font-bold text-right">
-                        <li><NavLink to='/'>NEW ARRIVALS</NavLink></li>
-                        <li><NavLink to='/'>WOMENS</NavLink></li>
-                        <li><NavLink to='/'>DRESSES</NavLink></li>
-                        <li><NavLink to='/'>TOPS</NavLink></li>
-                        <li><NavLink to='/'>BOTTOMS</NavLink></li>
-                        <li><NavLink to='/'>SHOES</NavLink></li>
-                        <li><NavLink to='/'>SIGN IN</NavLink></li>
-                        <li><NavLink to='/'>LOG IN</NavLink></li>
+                        <li><NavLink to='/arrivals'>NEW ARRIVALS</NavLink></li>
+                        <li><NavLink to='/womens'>WOMENS</NavLink></li>
+                        <li><NavLink to='/dresses'>DRESSES</NavLink></li>
+                        <li><NavLink to='/tops'>TOPS</NavLink></li>
+                        <li><NavLink to='/bottoms'>BOTTOMS</NavLink></li>
+                        <li><NavLink to='/shoes'>SHOES</NavLink></li>
+                        <li onClick={()=>{
+                                setShow(!show)
+                        }}><NavLink to='/home/signin'>SIGN IN</NavLink></li>
                     </ul>
                 </nav>
             </div>

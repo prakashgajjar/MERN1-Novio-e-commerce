@@ -1,7 +1,9 @@
-import React, { useEffect, useState , useRef } from 'react';
+import React, { useEffect, useState , useRef, useContext } from 'react';
 import Novio from '../navbar/Novio';
 import Navigation from '../navbar/Navigation';
 import Icons from '../navbar/Icons';
+import ThemeContext from '../../../ContextProvider';
+import Menu from './Menu';
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(true);
@@ -22,6 +24,8 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const {show , setShow } = useContext(ThemeContext)
 
   return (
     <div className="fixed top-0 left-0 w-full bg-transparent ">

@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import Menu from '../header/Menu';
 import ThemeContext from '../../../ContextProvider';
 import gsap from 'gsap';
 
@@ -10,6 +9,9 @@ const Icons = () => {
     const handleToggle = () => {
         setShow(!show);
     };
+    const changeShow = () => {
+        setShow(true);
+      }
 
     // Animate SVG to cross smoothly
     useEffect(() => {
@@ -62,7 +64,7 @@ const Icons = () => {
                         <path className="line2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 16h14" />
                     </svg>
                 </li>
-                <li>
+                <li onClick={changeShow}>
                     <img className="w-5 h-5" src="/icons/shopping-cart.png" alt="Shopping Cart Icon" />
                 </li>
             </ul>

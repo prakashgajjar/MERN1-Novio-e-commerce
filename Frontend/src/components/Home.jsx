@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Navbar from "./header/Navbar";
 import Text from "./header/Text";
 import Video from "./header/video";
@@ -16,7 +16,7 @@ import Menu from "./header/Menu";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const navbarRef = useRef(null);
+  // const navbarRef = useRef(null);
   const videoRef = useRef(null);
   const smallTextRef = useRef(null);
   const smallText2Ref = useRef(null);
@@ -27,18 +27,11 @@ const Home = () => {
   const mainRef = useRef(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline();
 
-    tl.from(navbarRef.current, {
+    gsap.from(videoRef.current, {
       y: -10,
       opacity: 0,
-      duration: 0.4,
-    });
-
-    tl.from(videoRef.current, {
-      y: -10,
-      opacity: 0,
-      delay: 1.2,
+      delay: 1.6,
       duration: 0.3,
     });
 
@@ -103,19 +96,11 @@ const Home = () => {
     });
   }, []);
 
-    
-
-
-  const [show, setShow] = useState(true); 
-
-
-
+  const {show , setShow}  =useContext(ThemeContext);
   return (
-    <ThemeContext.Provider value={{ setShow, show }}>
+   
       <div ref={mainRef} className={` overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
-        <div ref={navbarRef} className="fixed  w-full z-50">
-          <Navbar />
-        </div>
+        
 
         <div className={`${show ? 'hidden' : 'block'}`}>
           <Menu />
@@ -146,7 +131,7 @@ const Home = () => {
           <Footer />
         </div>
       </div>
-    </ThemeContext.Provider>
+   
   );
 };
 
