@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Navbar from '../header/Navbar';
 import Menu from '../header/Menu';
 import ThemeContext from '../../../ContextProvider';
 
@@ -7,62 +6,68 @@ const About = () => {
   const { show } = useContext(ThemeContext);
 
   return (
-    <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>
-      <div className="fixed w-full z-50">
-        <Navbar />
-      </div>
-      <div className={`${show ? 'hidden' : 'block'}`}>
+    <div className={` relative w-full min-h-screen bg-[#f5f5f5] text-gray-900 overflow-hidden overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
+   
+      <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
         <Menu />
       </div>
-      <div className="h-screen flex justify-center items-start">
-        {/* Sidebar */}
-        <div className="fixed left-32 top-32 w-64">
-          <ul className="flex flex-col gap-2">
-            <li className="py-4 pl-6 hover:bg-gray-100 border-l-4 border-transparent hover:border-black text-gray-900 cursor-pointer">
-              Home
-            </li>
-            <li className="py-4 pl-6 hover:bg-gray-100 border-l-4 border-transparent hover:border-black text-gray-900 cursor-pointer">
-              About
-            </li>
-            <li className="py-4 pl-6 hover:bg-gray-100 border-l-4 border-transparent hover:border-black text-gray-900 cursor-pointer">
-              Contact
-            </li>
-          </ul>
-        </div>
 
-        {/* Vertical Divider */}
-        <div className="absolute left-[400px] top-32 h-[1000px] w-[2px] bg-gray-300"></div>
+      {/* Hero Section */}
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white">
+        <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide">
+          Fashion is Freedom
+        </h1>
+        <p className="mt-4 text-lg md:text-2xl max-w-3xl">
+          Elevate your style, express your soul, and wear confidence like never before.
+        </p>
+        <p className="mt-6 text-lg font-semibold">Developed by Prakash Suthar</p> {/* Your name added here */}
+        <button className="mt-6 px-8 py-3 text-lg font-semibold uppercase border border-white hover:bg-white hover:text-gray-900 transition">
+          Discover More
+        </button>
+      </section>
 
-        {/* Right Section */}
-        <div className="absolute left-[500px] top-32 w-96">
-          <h1 className="text-3xl font-semibold text-center mb-6">About Us</h1>
-          <p className="text-lg text-gray-700 mb-4">
-            Welcome to our website! We are a team of passionate individuals dedicated to providing you with the best products and services. Whether you're here for shopping, tracking orders, or looking to create an account, we are committed to offering a seamless experience.
-          </p>
-          <p className="text-lg text-gray-700 mb-4">
-            Our mission is simple: <strong>Fashion is Freedom</strong>. We believe that everyone should feel confident in their own skin, and our clothing is designed to do just that. We offer a wide range of styles to cater to your personal taste, ensuring you find something that makes you feel amazing.
-          </p>
-          
-          <h2 className="text-xl font-semibold mt-6">Our Team</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            We are a group of designers, developers, and customer support specialists working together to create a user-friendly platform. Our goal is to help you discover fashion that suits your needs and express yourself freely.
-          </p>
-          
-          <h2 className="text-xl font-semibold mt-6">Why Choose Us?</h2>
-          <ul className="list-disc pl-6 text-lg text-gray-700">
-            <li>Wide variety of trendy clothing</li>
-            <li>Easy-to-use website for browsing and ordering</li>
-            <li>Secure payment and fast shipping</li>
-            <li>Excellent customer service for all inquiries</li>
-          </ul>
+      {/* Brand Story */}
+      <section className="w-full py-20 px-6 md:px-16 bg-white text-center">
+        <h2 className="text-4xl font-bold uppercase tracking-wide">Our Story</h2>
+        <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
+          Novio was founded with a mission: to make fashion an extension of your personality. 
+          We design clothing that blends luxury with authenticity—crafted for those who dare to stand out.
+        </p>
+        <p className="mt-6 text-lg font-semibold">Developed by Prakash Suthar</p> {/* Your name added here */}
+      </section>
 
-          <div className="mt-6">
-            <button className="bg-gray-800 text-white py-2 rounded hover:bg-gray-700 w-full">
-              Learn More
-            </button>
+      {/* Mission Section */}
+      <section className="w-full py-20 px-6 md:px-16 bg-gray-100 text-center">
+        <h2 className="text-4xl font-bold uppercase tracking-wide">Our Mission</h2>
+        <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
+          Our philosophy is simple: Fashion should be fearless. We craft timeless pieces that embody confidence, sophistication, and individuality.
+        </p>
+        <div className="flex justify-center mt-8 gap-6">
+          <div className="p-6 border border-gray-400 rounded-lg hover:bg-gray-200 transition">
+            <h3 className="text-xl font-semibold">Timeless Elegance</h3>
+            <p className="mt-2 text-gray-700">Classic designs that never fade.</p>
+          </div>
+          <div className="p-6 border border-gray-400 rounded-lg hover:bg-gray-200 transition">
+            <h3 className="text-xl font-semibold">Premium Quality</h3>
+            <p className="mt-2 text-gray-700">Luxury fabrics, perfect craftsmanship.</p>
+          </div>
+          <div className="p-6 border border-gray-400 rounded-lg hover:bg-gray-200 transition">
+            <h3 className="text-xl font-semibold">Confidence Redefined</h3>
+            <p className="mt-2 text-gray-700">Wear your personality boldly.</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="w-full py-20 px-6 md:px-16 bg-black text-white text-center">
+        <h2 className="text-4xl font-bold uppercase tracking-wide">Join the Revolution</h2>
+        <p className="mt-6 text-lg max-w-3xl mx-auto">
+          Experience fashion without limits. Follow us, shop our collections, and make a statement.
+        </p>
+        <button className="mt-6 px-8 py-3 text-lg font-semibold uppercase border border-white hover:bg-white hover:text-black transition">
+          Shop Now
+        </button>
+      </section>
     </div>
   );
 };

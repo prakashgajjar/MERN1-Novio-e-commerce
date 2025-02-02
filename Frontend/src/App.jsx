@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
 import Home from "./components/Home";
 import SignIn from "./components/RoutesComponents/SignIn";
 import Navbar from "./components/header/Navbar"; 
@@ -8,7 +7,9 @@ import ThemeContext from "../ContextProvider";
 import { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import './App.css'
+import About from "./components/RoutesComponents/About";
+import Contact from "./components/RoutesComponents/Contact";
 
 const App = () => {
   const [show, setShow] = useState(true); 
@@ -31,10 +32,11 @@ const App = () => {
         </div>
         
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/home/signin" element={<SignIn />} />
-          <Route path="/home/about" element={<SignIn />} />
+
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
       </ThemeContext.Provider>

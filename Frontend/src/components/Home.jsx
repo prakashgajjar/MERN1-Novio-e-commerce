@@ -100,8 +100,6 @@ const Home = () => {
   return (
    
       <div ref={mainRef} className={` overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
-        
-
         <div className={`${show ? 'hidden' : 'block'}`}>
           <Menu />
         </div>

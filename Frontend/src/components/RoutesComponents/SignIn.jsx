@@ -1,11 +1,85 @@
 import React, { useContext, useState } from 'react';
-import Navbar from '../header/Navbar';
+import { useNavigate } from 'react-router-dom';
 import Menu from '../header/Menu';
 import ThemeContext from '../../../ContextProvider';
-
+import Footer from '../footer/Footer';
 const OrderStatus = () => {
   const { show,setShow } = useContext(ThemeContext);
   const [activeTab, setActiveTab] = useState('signin');
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [First_name, setFirst_name] = useState('');
+  const [Last_name, setlast_NAme] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    if (!email || !password) {
+      setErrorMessage('Both email and password are required.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include', 
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Cookies should be set in the browser now.');
+       await navigate('/');
+      } else {
+        setErrorMessage(data.message || 'Login failed. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again later.');
+    }
+  };
+
+  //  sign-up request
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    if (!email || !password || !username || !First_name || !Last_name) {
+      setErrorMessage('All fields are required.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password,First_name , Last_name }),
+        credentials: 'include', 
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        navigate('/');
+        alert('Sign Up successful!');
+      } else {
+        setErrorMessage(data.message || 'Sign Up failed. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again later.');
+    }
+  };
 
   return (
     <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>      
@@ -44,16 +118,25 @@ const OrderStatus = () => {
         </div>
 
         {/* Vertical Divider */}
-        <div className="absolute left-[400px] top-32 h-[1000px] w-[2px] bg-gray-300"></div>
+        <div className="absolute left-[400px] top-32 h-[905px] w-[2px] bg-gray-300"></div>
 
         {/* Right Section */}
         <div className="absolute left-[500px] top-32 w-96">
           {activeTab === 'signin' ? (
             <>
               <h1 className="text-xl font-semibold">Sign in</h1>
-              <form className="mt-5 flex flex-col gap-4">
-                <input className="p-3 border border-gray-300 rounded" type="email" placeholder="Email address" />
-                <input className="p-3 border border-gray-300 rounded" type="password" placeholder="Password" />
+              <form onSubmit={handleLogin} className="mt-5 flex flex-col gap-4">
+                <input className="p-3 border border-gray-300 rounded" 
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address" />
+                <input className="p-3 border border-gray-300 rounded" 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password" />
+                {errorMessage && <div className="text-red-500 text-sm mb-4">{errorMessage}</div>}
                 <button className="bg-gray-800 text-white py-2 rounded hover:bg-gray-700">Sign In</button>
               </form>
               <p className="text-sm text-center mt-6 text-gray-600">
@@ -66,12 +149,32 @@ const OrderStatus = () => {
           ) : activeTab === 'register' ? (
             <>
               <h1 className="text-xl font-semibold">Register</h1>
-              <form className="mt-5 flex flex-col gap-4">
-                <input className="p-3 border border-gray-300 rounded" type="text" placeholder="First Name" />
-                <input className="p-3 border border-gray-300 rounded" type="text" placeholder="Last Name" />
-                <input className="p-3 border border-gray-300 rounded" type="email" placeholder="Email address" />
-                <input className="p-3 border border-gray-300 rounded" type="password" placeholder="Password" />
-                <input className="p-3 border border-gray-300 rounded" type="date" placeholder="Date of Birth" />
+              <form onSubmit={handleSignUp} className="mt-5 flex flex-col gap-4">
+               <input className="p-3 border border-gray-300 rounded" 
+               type="text" 
+               value={username} 
+                onChange={(e) => setUsername(e.target.value)}
+               placeholder="Username" />
+                <input className="p-3 border border-gray-300 rounded" 
+                type="text" 
+                value={First_name} 
+                onChange={(e) => setFirst_name(e.target.value)}
+               placeholder="First Name" />
+                <input className="p-3 border border-gray-300 rounded" 
+                type="text" 
+                value={Last_name} 
+                onChange={(e) => setlast_NAme(e.target.value)}
+               placeholder="Last Name" />
+                <input className="p-3 border border-gray-300 rounded" 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address" />
+                <input className="p-3 border border-gray-300 rounded" 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password" />
                 <select className="p-3 border border-gray-300 rounded">
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
@@ -110,6 +213,7 @@ const OrderStatus = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

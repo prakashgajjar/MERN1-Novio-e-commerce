@@ -4,8 +4,8 @@ const User = require('../models/user.models.js');
 const express = require('express');
 
 const signupUser = async (req,res)=>{
-    const { username, email, password } = req.body;
-    console.log(username, email, password);
+    const { username, email, password , First_name , Last_name } = req.body;
+    console.log(username, email, password , First_name, Last_name);
 
 try {
    const salt = await  bcrypt.genSalt(10)
@@ -15,6 +15,8 @@ try {
             const newUser =  await User.create({
                 username,
                 email,
+                first_name : First_name,
+                last_name : Last_name,
                 password : bcryptedPassword.toString(),
             })
     

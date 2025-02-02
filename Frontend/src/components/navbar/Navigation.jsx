@@ -16,7 +16,7 @@ const NavigationLinks = () => {
       <ul ref={textRef} className="flex gap-20 text-[12px]  px-3 py-2 justify-center items-center">
       <li onClick={changeShow}>
             <NavLink
-              to="/home"
+              to="/"
            
             >
               HOME

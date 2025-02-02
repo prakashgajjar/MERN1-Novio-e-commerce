@@ -61,7 +61,7 @@ const Menu = () => {
                         <li><NavLink to='/shoes'>SHOES</NavLink></li>
                         <li onClick={()=>{
                                 setShow(!show)
-                        }}><NavLink to='/home/signin'>SIGN IN</NavLink></li>
+                        }}><NavLink to='/signin'>SIGN IN</NavLink></li>
                     </ul>
                 </nav>
             </div>
