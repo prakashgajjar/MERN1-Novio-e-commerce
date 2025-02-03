@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import './App.css'
 import About from "./components/RoutesComponents/About";
 import Contact from "./components/RoutesComponents/Contact";
+import Profile from "./components/RoutesComponents/Profile";
 
 const App = () => {
   const [show, setShow] = useState(true); 
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{ setShow, show }}>
       <Router>
-      <div ref={navbarRef} className="fixed  w-full z-50">
+      <div ref={navbarRef} className="fixed  w-full  z-[101]">
           <Navbar />
         </div>
         
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
       </ThemeContext.Provider>

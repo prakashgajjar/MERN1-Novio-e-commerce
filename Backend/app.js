@@ -3,6 +3,7 @@ const app = express();
 const login = require('./routes/login.routes.js');
 const signup = require('./routes/signup.routes.js');
 const home = require('./routes/home.routes.js');
+const profile = require('./routes/profile.routes.js');
 const cookieParser = require('cookie-parser'); 
 
 const cors = require('cors');
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use('/login',login);
 app.use('/signup',signup);
 app.use('/home',home);
+app.use('/profile',profile);
 
 
 const PORT = process.env.PORT || 3000;

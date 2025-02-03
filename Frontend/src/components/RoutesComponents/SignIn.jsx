@@ -83,12 +83,12 @@ const OrderStatus = () => {
 
   return (
     <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>      
-<div className={`z-40 ${show ? 'hidden' : 'block'}`}>
+<div className={`z-[100] relative ${show ? 'hidden' : 'block'}`}>
   <Menu />
 </div>
 <div className="h-screen flex justify-center items-start relative z-0"> 
         {/* Sidebar */}
-        <div className="fixed left-32 top-32 w-64">
+        <div className="fixed left-32 top-32 w-64 z-0 ">
           <ul className="flex flex-col gap-2">
             <li 
               className={`py-4 pl-6  hover:bg-gray-100 border-l-4 border-transparent hover:border-black text-black cursor-pointer ${activeTab === 'signin' && 'border-black'}`}
