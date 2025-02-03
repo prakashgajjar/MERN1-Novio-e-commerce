@@ -23,6 +23,6 @@ app.use('/profile',profile);
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(3000 , () => {
   console.log('Server is running on port 3000');
 })

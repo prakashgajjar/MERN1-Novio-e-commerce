@@ -13,7 +13,7 @@ const About = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-white">
         <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide">
           Fashion is Freedom
         </h1>

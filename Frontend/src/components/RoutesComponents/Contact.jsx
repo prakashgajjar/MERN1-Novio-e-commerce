@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Menu from '../header/Menu';
 import ThemeContext from '../../../ContextProvider';
+import Footer1 from '../footer/Footer1';
 
 const Contact = () => {
   const { show } = useContext(ThemeContext);
@@ -25,14 +26,15 @@ const Contact = () => {
   };
 
   return (
-    <div className={`relative w-full min-h-screen bg-[#f5f5f5] text-gray-900 overflow-hidden ${show ? "h-full" : "h-screen"}`}>
+    <div className={`relative w-full bg-[#f5f5f5] text-gray-900  overflow-hidden ${show ? "h-full" : "h-screen"}`}>
 
       <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
         <Menu />
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white">
+     <div className=''>
+     <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-white ">
         <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide">
           Get in Touch
         </h1>
@@ -111,29 +113,8 @@ const Contact = () => {
       </section>
 
       {/* Footer Section */}
-      <footer className="w-full bg-gray-900 text-white py-16">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h3 className="text-2xl font-semibold mb-4">Stay Connected</h3>
-          <p className="text-lg mb-8">
-            Don't miss any updates. Follow us on social media and join the Novio community.
-          </p>
-          <div className="flex justify-center space-x-8 mb-10">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition">
-              <i className="fab fa-instagram fa-2x"></i>
-            </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition">
-              <i className="fab fa-facebook fa-2x"></i>
-            </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition">
-              <i className="fab fa-twitter fa-2x"></i>
-            </a>
-          </div>
-
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Novio. All Rights Reserved.
-          </p>
-        </div>
-      </footer>
+     <Footer1/>
+     </div>
     </div>
   );
 };

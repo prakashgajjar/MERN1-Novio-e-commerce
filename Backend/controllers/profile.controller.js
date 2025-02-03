@@ -1,17 +1,27 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const User = require('../models/user.models.js');
 
-const UserService = async (req, res) => {
- try {
-  jwt.verify(loginTtokenx, 'prakash', function(err, decoded) {
-    console.log(decoded.foo) 
-  });
-  
- } catch (error) {
-    console.log(error.message);
- }
+const app = express();
+app.use(cookieParser()); 
 
-  console.log('profile page is active now')
+const UserService = async (req, res) => {
+    try {
+     
+      const user = req.user;
+      // console.log(user);
+
+     const activeUser = await User.findOne({_id: user.id});
+      console.log(activeUser);
+     
+
+
+      res.json(activeUser);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: "Server error" });
+    }
 };
 
 module.exports = UserService;

@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
+import ThemeContext from "../../../ContextProvider";
+import Menu from "../header/Menu";
+import Footer from "../footer/Footer";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("myAccount");
   const [errorMessage, setErrorMessage] = useState(""); 
-  const navigate = useNavigate();  
+  const [responseData, setResponseData] = useState(null);  
+  const navigate = useNavigate();
 
   // Improved handleProfile function
   const handleProfile = async () => {
@@ -14,14 +18,19 @@ const ProfilePage = () => {
         credentials: "include", 
       });
       
-      const responseData = await response.json();
+      const data = await response.json();
+     
+      console.log(data);
       
       if (response.ok) {
-        alert("You are valid!");
-        console.log("Cookies should be set in the browser now.");
-        navigate("/"); 
+        setResponseData(data);
+        // console.log(Data.username , Data.first_name , Data.last_name , Data.role)
+        // console.log("Cookies should be set in the browser now.");
+        navigate("/profile"); 
       } else {
-        setErrorMessage(responseData.message || "Login failed. Please try again.");
+        alert("Login first !");
+        setErrorMessage(data.message || "Login failed. Please try again.");
+        navigate("/signin") ;
       }
     } catch (error) {
       console.log(error);
@@ -29,27 +38,39 @@ const ProfilePage = () => {
     }
   };
 
-  // Trigger handleProfile only once when the component is mounted
+  // console.log(responseData);
+
+  
+
+  
   useEffect(() => {
     handleProfile();
-  }, []); // Empty dependency array to run this effect once on mount
+
+  }, []); 
+
+  const {show } = useContext(ThemeContext);
 
   return (
-    <div className="h-screen flex flex-col bg-white text-black">
+   <div className={`overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
+     <div className={` flex h-screen flex-col bg-white text-black  overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-gray-500 to-gray-400 text-white text-center py-24 mt-20 shadow-lg relative">
+      <div className={`${show ? 'hidden' : 'block'}`}>
+          <Menu />
+        </div>
+      <div className="bg-gradient-to-r from-gray-500 to-gray-400 text-white text-center py-24 mt-24 shadow-lg relative">
         <div className="relative z-10">
-          <h1 className="text-5xl font-extrabold leading-tight">Welcome, Prakash!</h1>
-          <p className="text-lg mt-4 opacity-90">Card number: 3407 6931 1758 0616</p>
+          <h1 className="text-5xl font-extrabold leading-tight">Welcome, {responseData?.first_name || "Guest"} </h1>
+          <p className="text-lg mt-4 opacity-90"></p>
         </div>
       </div>
 
       <div className="flex ml-[400px]">
         {/* Sidebar */}
-        <div className="w-64 border-r border-gray-300 p-6 fixed mt-20">
+        <div className="w-64 border-r-2 border-gray-300 p-6 fixed mt-20">
+         
           <ul className="flex flex-col gap-4">
             <li
-              className={`py-2 pl-4 cursor-pointer border-l-4 transition-all ${activeTab === "myAccount" ? "border-black" : "border-transparent text-gray-500"}`}
+              className={`py-2  pl-4 cursor-pointer border-l-4 transition-all ${activeTab === "myAccount" ? "border-black" : "border-transparent text-gray-500"}`}
               onClick={() => setActiveTab("myAccount")}
             >
               My account
@@ -83,12 +104,12 @@ const ProfilePage = () => {
               <div className="space-y-6">
                 <div>
                   <p className="font-semibold text-sm">Name</p>
-                  <p className="text-md font-normal">Prakash Gajjar</p>
+                  <p className="text-md font-normal">{`${responseData?.first_name || "<unknown></unknown>"} ${responseData?.last_name || ""}`}</p>
                 </div>
                 <div>
                   <p className="font-semibold text-sm">Email</p>
                   <p className="text-md font-normal">
-                    prakashgajjar095@gmail.com{" "}
+                    {`${responseData?.email} `}
                     <span className="text-blue-500 cursor-pointer">Verify</span>
                   </p>
                 </div>
@@ -129,7 +150,12 @@ const ProfilePage = () => {
           )}
         </div>
       </div>
+     
+    </div >
+    <div className="">
+    <Footer/>
     </div>
+   </div>
   );
 };
 
