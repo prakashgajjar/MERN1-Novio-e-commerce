@@ -99,11 +99,7 @@ const Home = () => {
   const {show , setShow}  =useContext(ThemeContext);
   return (
    
-      <div ref={mainRef} className={` overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
-       { <div className={`${show ? 'hidden' : 'block'}`}>
-          <Menu />
-        </div>
-}
+      <div ref={mainRef} className={` overflow-hidden`}>
         <div>
           <Text />
         </div>

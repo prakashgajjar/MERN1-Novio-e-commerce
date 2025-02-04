@@ -10,9 +10,9 @@ const isLogin = (req, res, next) => {
   try {
  
     const decoded = jwt.verify( token, 'prakash');
-    console.log(decoded.foo) 
+    console.log(decoded) 
     req.user = decoded;
-    console.log(token)
+    // console.log(req.user)
    next();
   } catch (error) {
     return res.status(403).json({ message: 'Invalid token. Access denied.' });

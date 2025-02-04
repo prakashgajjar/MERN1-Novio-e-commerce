@@ -7,6 +7,7 @@ const ProductSchema = new Schema({
     stock_quantity: { type: Number, required: true },
     image: { type: String },  // URL to image
     category: { type: String },
+    
 });
 
 export const Product =   mongoose.model('Product', ProductSchema);

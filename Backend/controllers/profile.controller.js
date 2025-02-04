@@ -15,7 +15,6 @@ const UserService = async (req, res) => {
       console.log(activeUser);
      
 
-
       res.json(activeUser);
 
     } catch (error) {

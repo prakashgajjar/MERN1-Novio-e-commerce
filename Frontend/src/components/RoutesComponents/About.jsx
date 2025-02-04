@@ -6,11 +6,7 @@ const About = () => {
   const { show } = useContext(ThemeContext);
 
   return (
-    <div className={` relative w-full min-h-screen bg-[#f5f5f5] text-gray-900 overflow-hidden overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
-   
-      <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
-        <Menu />
-      </div>
+    <div className={` relative w-full min-h-screen bg-[#f5f5f5] text-gray-900 overflow-hidden overflow-hidden`}>
 
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-white">

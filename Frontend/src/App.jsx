@@ -11,9 +11,14 @@ import './App.css'
 import About from "./components/RoutesComponents/About";
 import Contact from "./components/RoutesComponents/Contact";
 import Profile from "./components/RoutesComponents/Profile";
+import Cart from "./components/RoutesComponents/Cart";
+import Menu from "./components/header/Menu";
+import BgChangeCard from "./components/componets/BgChangeCard";
 
 const App = () => {
   const [show, setShow] = useState(true); 
+  const [data , setData] = useState([])
+    //that use for usercard animation when open that help to perform animation
 
   const navbarRef = React.useRef(null);
 
@@ -26,11 +31,16 @@ const App = () => {
   })
 
   return (
-    <ThemeContext.Provider value={{ setShow, show }}>
+    <ThemeContext.Provider value={{ setShow, show  , data , setData}}>
       <Router>
-      <div ref={navbarRef} className="fixed  w-full  z-[101]">
+ <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>
+ <div ref={navbarRef} className="fixed  w-full  z-[101]">
           <Navbar />
         </div>
+        <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
+        <Menu />
+      </div>
+ 
         
         <Routes>
 
@@ -39,8 +49,11 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/usercart" element={<Cart />} />
         </Routes>
+        </div>
       </Router>
+      
       </ThemeContext.Provider>
   );
 };

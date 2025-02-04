@@ -4,6 +4,7 @@ const login = require('./routes/login.routes.js');
 const signup = require('./routes/signup.routes.js');
 const home = require('./routes/home.routes.js');
 const profile = require('./routes/profile.routes.js');
+const cartDetail = require('./routes/cartDetail.routes.js');
 const cookieParser = require('cookie-parser'); 
 
 const cors = require('cors');
@@ -20,6 +21,7 @@ app.use('/login',login);
 app.use('/signup',signup);
 app.use('/home',home);
 app.use('/profile',profile);
+app.use('/api',cartDetail);
 
 
 const PORT = process.env.PORT || 3000;

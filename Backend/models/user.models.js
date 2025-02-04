@@ -23,10 +23,10 @@ const userSchema = new mongoose.Schema({
             default: 'customer',
         },
     
-        wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
-        cart_items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+        wishlist: [],
+        cart_items: [],
         
-        order_history: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+        order_history: [{  }],
 
         is_active: { type: Boolean, default: true },
 

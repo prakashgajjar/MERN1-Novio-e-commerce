@@ -28,9 +28,6 @@ const Contact = () => {
   return (
     <div className={`relative w-full bg-[#f5f5f5] text-gray-900  overflow-hidden ${show ? "h-full" : "h-screen"}`}>
 
-      <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
-        <Menu />
-      </div>
 
       {/* Hero Section */}
      <div className=''>

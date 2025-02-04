@@ -15,6 +15,7 @@ const OrderStatus = () => {
   const [Last_name, setlast_NAme] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isLogin, setIsLogin] = useState(true);
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ const OrderStatus = () => {
         credentials: 'include', 
       });
 
+      
       const data = await response.json();
 
       if (response.ok) {
@@ -82,10 +84,7 @@ const OrderStatus = () => {
   };
 
   return (
-    <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>      
-<div className={`z-[100] relative ${show ? 'hidden' : 'block'}`}>
-  <Menu />
-</div>
+    <div className={`overflow-hidden`}>      
 <div className="h-screen flex justify-center items-start relative z-0"> 
         {/* Sidebar */}
         <div className="fixed left-32 top-32 w-64 z-0 ">
