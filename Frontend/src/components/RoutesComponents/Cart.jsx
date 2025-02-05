@@ -54,9 +54,6 @@ const BlackScreen = () => {
 
     return (
         <div className="relative w-screen h-screen">
-            <div>
-
-            </div>
             {overlayVisible && (
             
 

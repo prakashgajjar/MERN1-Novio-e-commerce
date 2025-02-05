@@ -14,6 +14,7 @@ import Profile from "./components/RoutesComponents/Profile";
 import Cart from "./components/RoutesComponents/Cart";
 import Menu from "./components/header/Menu";
 import BgChangeCard from "./components/componets/BgChangeCard";
+import StorePage from "./components/store/StorePage";
 
 const App = () => {
   const [show, setShow] = useState(true); 
@@ -25,9 +26,9 @@ const App = () => {
 
   useGSAP(()=>{
     gsap.from(navbarRef.current, {
-      y: -10,
+      y: -50,
       opacity: 0,
-      duration: 0.4,
+      duration: 0.5,
     });
   })
 
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/usercart" element={<Cart />} />
+          <Route path="/shop" element={<StorePage />} />
         </Routes>
         </div>
       </Router>

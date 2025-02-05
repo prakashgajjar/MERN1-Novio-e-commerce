@@ -5,9 +5,6 @@ const Novio = () => {
   const text1Ref = useRef();
   useEffect(()=>{
     text1Ref.current.style.color = show? 'black' : 'white';
-   if(show){
-    text1Ref.current.style.color = open? 'white' : 'black';
-   }
   
   })
   return (
