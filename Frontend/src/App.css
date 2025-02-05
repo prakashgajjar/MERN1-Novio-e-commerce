@@ -10,3 +10,24 @@
   .social-icon {
     @apply text-gray-400 text-2xl transition-transform transform hover:scale-110 hover:text-white;
   }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+    min-width: 100%;
+  }
+  
+  

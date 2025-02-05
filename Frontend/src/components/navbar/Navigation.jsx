@@ -2,11 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import ThemeContext from '../../../ContextProvider';
 const NavigationLinks = () => {
-  const { show,setShow } = React.useContext(ThemeContext);
+  const { show,setShow,open } = React.useContext(ThemeContext);
   const textRef = useRef();
   useEffect(()=>{
     textRef.current.style.color = show? 'black' : 'white';
-   
+    if(show){
+      textRef.current.style.color = open? 'white' : 'black';
+     }
   })
   const changeShow = () => {
     setShow(true);

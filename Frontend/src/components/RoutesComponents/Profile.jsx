@@ -4,12 +4,28 @@ import ThemeContext from "../../../ContextProvider";
 import Menu from "../header/Menu";
 import Footer from "../footer/Footer";
 import { NavLink } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("myAccount");
   const [errorMessage, setErrorMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
+ 
+
+const showAlert = () => {
+    Swal.fire({
+        title: "Login Required!",
+        text: "You need to log in first to continue.",
+        icon: "warning",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#3085d6",
+        background: "#1e293b",
+        color: "#fff",
+        timer: 2200,
+    });
+};
+
+
 
 
   const {data , setData} = useContext(ThemeContext)
@@ -30,7 +46,7 @@ const ProfilePage = () => {
   
         navigate("/profile");
       } else {
-        alert("Login first !");
+        showAlert();
         setErrorMessage(data.message || "Login failed. Please try again.");
         navigate("/signin");
       }
@@ -40,8 +56,6 @@ const ProfilePage = () => {
     }
   };
 
-  // console.log(responseData);
-
 
 
 
@@ -50,8 +64,7 @@ const ProfilePage = () => {
 
   }, []);
 
-  const { show } = useContext(ThemeContext);
-  const [open, setOpen] = useState(false)
+  const { show , open , setOpen } = useContext(ThemeContext);
 
   return (
     <div className={`overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
@@ -101,6 +114,7 @@ const ProfilePage = () => {
                 onClick={() => {
                   setActiveTab("cart")
                navigate('/usercart')
+               setOpen(true);
 
                 }}
               >

@@ -18,6 +18,7 @@ import BgChangeCard from "./components/componets/BgChangeCard";
 const App = () => {
   const [show, setShow] = useState(true); 
   const [data , setData] = useState([])
+  const [open, setOpen] = useState(true)
     //that use for usercard animation when open that help to perform animation
 
   const navbarRef = React.useRef(null);
@@ -31,13 +32,13 @@ const App = () => {
   })
 
   return (
-    <ThemeContext.Provider value={{ setShow, show  , data , setData}}>
+    <ThemeContext.Provider value={{ setShow, show  , data , setData , open , setOpen}}>
       <Router>
  <div className={`overflow-hidden ${show ? "h-full" : "h-screen"}`}>
  <div ref={navbarRef} className="fixed  w-full  z-[101]">
           <Navbar />
         </div>
-        <div className={`z-40 ${show ? 'hidden' : 'block'}`}>
+        <div className={`z-[100] ${show ? 'hidden' : 'block'}`}>
         <Menu />
       </div>
  

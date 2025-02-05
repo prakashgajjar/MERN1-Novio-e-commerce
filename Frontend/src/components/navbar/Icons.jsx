@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { NavLink } from 'react-router-dom';
 
 const Icons = () => {
-    const { show, setShow } = useContext(ThemeContext);
+    const { show, setShow , open } = useContext(ThemeContext);
     const iconRef = useRef(null);
 
     const handleToggle = () => {
@@ -53,7 +53,7 @@ const Icons = () => {
     }, [show]);
 
     return (
-        <div className={`${show ? "" : "mr-[33px]"} flex gap-14 text-sm font-medium rounded-2xl bg-white w-36 justify-center items-center py-1 ml-14 mr-4`}>
+        <div className={`${show ? "" : "mr-[33px]"} ${open ? "mr-[33px]" : ""} flex gap-14 text-sm font-medium rounded-2xl bg-white w-36 justify-center items-center py-1 ml-14 mr-4`}>
             <ul className='flex gap-20'>
                 <li>
                     <svg
