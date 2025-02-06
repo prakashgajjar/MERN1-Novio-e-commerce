@@ -5,6 +5,7 @@ import Menu from "../header/Menu";
 import Footer from "../footer/Footer";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("myAccount");
   const [errorMessage, setErrorMessage] = useState("");
@@ -64,7 +65,7 @@ const showAlert = () => {
 
   }, []);
 
-  const { show , open , setOpen } = useContext(ThemeContext);
+  const { show , open , setOpen , setShow } = useContext(ThemeContext);
 
   return (
     <div className={`overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
@@ -115,6 +116,8 @@ const showAlert = () => {
                   setActiveTab("cart")
                navigate('/usercart')
                setOpen(true);
+               setShow(false);
+               set
 
                 }}
               >

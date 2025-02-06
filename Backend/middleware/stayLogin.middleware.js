@@ -10,7 +10,6 @@ const isLogin = (req, res, next) => {
   try {
  
     const decoded = jwt.verify( token, 'prakash');
-    console.log('hey your entered styalogin middleware')
     // console.log(decoded) 
     req.user = decoded;
     // console.log(req.user)

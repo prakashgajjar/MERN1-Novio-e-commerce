@@ -10,7 +10,7 @@ const BlackScreen = () => {
     const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const { open, setOpen } = useContext(ThemeContext)
+    const { open, setOpen , setShow } = useContext(ThemeContext)
 
     //that api is retrive data of usercart 
     const handleCart = async () => {
@@ -47,11 +47,13 @@ const BlackScreen = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ itemId }), 
+                credentials: "include",
             });
+
+            const data = await response.json();
     
             if (!response.ok) {
-                const text = await response.text();
-                throw new Error(`Error: ${response.status}, Response: ${text}`);
+                throw new Error(`Error: ${response.status}, Response: ${data}`);
             }
     
             // Remove item from state after delete
@@ -72,12 +74,17 @@ const BlackScreen = () => {
         const newTotalPrice = cartItems.reduce((acc, item) => acc + (Number(item.price) || 0), 0);
         setTotalPrice(newTotalPrice);
     }, [cartItems]);
+    useEffect(()=>{
+        handleCart();
+    },[cartItems, setCartItems])
 
     const handleOverlayClick = () => {
         gsap.to(overlayRef.current, { y: "-100%", duration: 1, ease: "power2.in", onComplete: () => setOverlayVisible(false) });
         setOpen(!open)
+        setShow(true)
         setTimeout(() => {
             navigate('/profile');
+            
         }, 990);
     };
 
