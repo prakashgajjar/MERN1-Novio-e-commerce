@@ -11,6 +11,8 @@ const BlackScreen = () => {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const { open, setOpen } = useContext(ThemeContext)
+
+    //that api is retrive data of usercart 
     const handleCart = async () => {
         try {
             const response = await fetch("http://localhost:3000/api/cartData", {
@@ -18,6 +20,7 @@ const BlackScreen = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                
                 credentials: "include",
             });
 
@@ -33,6 +36,32 @@ const BlackScreen = () => {
             console.log("Fetch Error:", error);
         }
     };
+
+    //that api remove data from cart when user click the cross svg
+
+    const handleCartRemove = async (itemId) => {
+        try {
+            const response = await fetch("http://localhost:3000/cartRemove", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ itemId }), 
+            });
+    
+            if (!response.ok) {
+                const text = await response.text();
+                throw new Error(`Error: ${response.status}, Response: ${text}`);
+            }
+    
+            // Remove item from state after delete
+            setCartItems(cartItems.filter(item => item._id !== itemId));
+    
+        } catch (error) {
+            console.log("Fetch Error:", error);
+        }
+    };
+    
 
     useEffect(() => {
         gsap.fromTo(overlayRef.current, { y: "-100%" }, { y: "0%", duration: 1, ease: "power2.out" });
@@ -87,7 +116,9 @@ const BlackScreen = () => {
                                             <div className="flex justify-between px-5 mt-4">
                                                 <h1 className="text-lg text-gray-300">${item.price}</h1>
                                                 <div className="text-lg">
-                                                    <button className="p-2 transition transform hover:rotate-[30deg]">
+                                                    <button className="p-2 transition transform hover:rotate-[30deg]"
+                                                    onClick={() => handleCartRemove(item.id)}
+                                                    >
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                             <line x1="18" y1="6" x2="6" y2="18" />
                                                             <line x1="6" y1="6" x2="18" y2="18" />

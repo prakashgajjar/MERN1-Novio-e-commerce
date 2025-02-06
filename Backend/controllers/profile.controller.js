@@ -9,10 +9,8 @@ const UserService = async (req, res) => {
     try {
      
       const user = req.user;
-      // console.log(user);
 
      const activeUser = await User.findOne({_id: user.id});
-      console.log(activeUser);
      
 
       res.json(activeUser);

@@ -6,6 +6,7 @@ const home = require('./routes/home.routes.js');
 const profile = require('./routes/profile.routes.js');
 const cartDetail = require('./routes/cartDetail.routes.js');
 const cookieParser = require('cookie-parser'); 
+const cartRemove = require('./routes/cartRemove.routes.js');
 
 const cors = require('cors');
 app.use(cors({
@@ -21,6 +22,7 @@ app.use('/login',login);
 app.use('/signup',signup);
 app.use('/home',home);
 app.use('/profile',profile);
+app.use('/cartRemove',cartRemove);
 app.use('/api',cartDetail);
 
 

@@ -39,7 +39,7 @@ const StoreCard = ({img}) => {
       left: `${position.x - 20}px`,
       top: `${position.y - 20}px`,
       ease: 'power2.out',
-      duration: .9,
+      duration: 1,
     });
   }, [position]);
 

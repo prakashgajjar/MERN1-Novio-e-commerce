@@ -7,7 +7,7 @@ const userProduct = async (req,res)=>{
         const user = await User.findOne({_id : req.user.id});
         await user.cart_items.push(req.body) 
         await user.save()
-        console.log(user) 
+        // console.log(user) 
         return res.status(200).json( {message: 'Product added to cart'}, {cartdetail : user.cart_items });
     } catch (error) {
         console.log(error.message)

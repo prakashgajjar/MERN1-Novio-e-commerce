@@ -34,10 +34,10 @@ const CollectionOfCard = () => {
       {/* Row 1 */}
       <div className='flex justify-evenly '>
         <div ref={cardRefs[0]}>
-          <StoreCard img="\public\images\STORE\1.avif" />
+          <StoreCard img="\images\STORE\1.avif" />
         </div>
         <div ref={cardRefs[1]}>
-          <StoreCard img="\public\images\STORE\3.avif" />
+          <StoreCard img="\images\STORE\3.avif" />
         </div>
         
       </div>
@@ -45,20 +45,20 @@ const CollectionOfCard = () => {
       {/* Row 2 */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[3]}>
-          <StoreCard1 img='\public\images\STORE\2.avif' />
+          <StoreCard1 img='\images\STORE\2.avif' />
         </div>
         <div ref={cardRefs[4]}>
-          <StoreCard1 img='\public\images\STORE\4.avif' />
+          <StoreCard1 img='\images\STORE\4.avif' />
         </div>
         <div ref={cardRefs[5]}>
-          <StoreCard1 img='\public\images\STORE\6.avif' />
+          <StoreCard1 img='\images\STORE\6.avif' />
         </div>
       </div>
 
       {/* Row 3 with heading */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[6]}>
-          <StoreCard1 img='\public\images\STORE\7.avif' />
+          <StoreCard1 img='\images\STORE\7.avif' />
         </div>
         <div className='flex justify-center items-center'>
           <h1 className='w-[500px] text-2xl font-extrabold'>
@@ -66,27 +66,27 @@ const CollectionOfCard = () => {
           </h1>
         </div>
         <div ref={cardRefs[7]}>
-          <StoreCard1 img='\public\images\STORE\8.avif' />
+          <StoreCard1 img='\images\STORE\8.avif' />
         </div>
       </div>
 
       {/* Row 4 */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[8]}>
-          <StoreCard1 img='\public\images\STORE\9.avif' />
+          <StoreCard1 img='\images\STORE\9.avif' />
         </div>
         <div ref={cardRefs[9]}>
-          <StoreCard1 img='\public\images\STORE\10.avif' />
+          <StoreCard1 img='\images\STORE\10.avif' />
         </div>
         <div ref={cardRefs[10]}>
-          <StoreCard1 img='\public\images\STORE\11.avif' />
+          <StoreCard1 img='\images\STORE\11.avif' />
         </div>
       </div>
 
       {/* Row 5 with heading */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[11]}>
-          <StoreCard1 img='\public\images\STORE\12.avif' />
+          <StoreCard1 img='\images\STORE\12.avif' />
         </div>
         <div className='flex justify-center items-center'>
           <h1 className='w-[500px] text-2xl font-extrabold'>
@@ -94,27 +94,27 @@ const CollectionOfCard = () => {
           </h1>
         </div>
         <div ref={cardRefs[12]}>
-          <StoreCard1 img='\public\images\STORE\13.avif' />
+          <StoreCard1 img='\images\STORE\13.avif' />
         </div>
       </div>
 
       {/* Row 6 */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[13]}>
-          <StoreCard1 img='\public\images\STORE\14.avif' />
+          <StoreCard1 img='\images\STORE\14.avif' />
         </div>
         <div ref={cardRefs[14]}>
-          <StoreCard1 img='\public\images\STORE\15.avif' />
+          <StoreCard1 img='\images\STORE\15.avif' />
         </div>
         <div ref={cardRefs[15]}>
-          <StoreCard1 img='\public\images\STORE\16.avif' />
+          <StoreCard1 img='\images\STORE\16.avif' />
         </div>
       </div>
 
       {/* Row 7 with heading */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[16]}>
-          <StoreCard1 img='\public\images\STORE\17.avif' />
+          <StoreCard1 img='\images\STORE\17.avif' />
         </div>
         <div className='flex justify-center items-center'>
           <h1 className='w-[500px] text-2xl font-extrabold'>
@@ -122,27 +122,27 @@ const CollectionOfCard = () => {
           </h1>
         </div>
         <div ref={cardRefs[17]}>
-          <StoreCard1 img='\public\images\STORE\18.avif' />
+          <StoreCard1 img='\images\STORE\18.avif' />
         </div>
       </div>
 
       {/* Row 8 */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[18]}>
-          <StoreCard1 img='\public\images\STORE\19.avif' />
+          <StoreCard1 img='\images\STORE\19.avif' />
         </div>
         <div ref={cardRefs[19]}>
-          <StoreCard1 img='\public\images\STORE\20.avif' />
+          <StoreCard1 img='\images\STORE\20.avif' />
         </div>
         <div ref={cardRefs[20]}>
-          <StoreCard1 img='\public\images\STORE\21.avif' />
+          <StoreCard1 img='\images\STORE\21.avif' />
         </div>
       </div>
 
       {/* Row 9 with heading */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[21]}>
-          <StoreCard1 img='\public\images\STORE\22.avif' />
+          <StoreCard1 img='\images\STORE\22.avif' />
         </div>
         <div className='flex justify-center items-center'>
           <h1 className='w-[500px] text-2xl font-extrabold'>
@@ -150,20 +150,20 @@ const CollectionOfCard = () => {
           </h1>
         </div>
         <div ref={cardRefs[22]}>
-          <StoreCard1 img='\public\images\STORE\23.avif' />
+          <StoreCard1 img='\images\STORE\23.avif' />
         </div>
       </div>
 
       {/* Row 10 */}
       <div className='flex justify-evenly mt-20'>
         <div ref={cardRefs[23]}>
-          <StoreCard1 img='\public\images\STORE\24.avif' />
+          <StoreCard1 img='\images\STORE\24.avif' />
         </div>
         <div ref={cardRefs[24]}>
-          <StoreCard1 img='\public\images\STORE\25.avif' />
+          <StoreCard1 img='\images\STORE\25.avif' />
         </div>
         <div ref={cardRefs[25]}>
-          <StoreCard1 img='\public\images\STORE\26.avif' />
+          <StoreCard1 img='\images\STORE\26.avif' />
         </div>
       </div>
     </div>
