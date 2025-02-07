@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import ThemeContext from "../../../ContextProvider";
-import Navbar from "../header/Navbar";
 
 const BlackScreen = () => {
     const [overlayVisible, setOverlayVisible] = useState(true);
@@ -19,16 +18,13 @@ const BlackScreen = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                
+                }, 
                 credentials: "include",
             });
-
             if (!response.ok) {
                 const text = await response.text();
                 throw new Error(`Error: ${response.status}, Response: ${text}`);
             }
-
             const data = await response.json();
             setCartItems(data?.cart_items?.filter(item => Object.keys(item).length > 0) || []);
 
@@ -36,9 +32,7 @@ const BlackScreen = () => {
             console.log("Fetch Error:", error);
         }
     };
-
-    //that api remove data from cart when user click the cross svg
-
+    //that api remove data from cart when user click the cross icon svg
     const handleCartRemove = async (itemId) => {
         try {
             const response = await fetch("http://localhost:3000/cartRemove", {
@@ -49,13 +43,10 @@ const BlackScreen = () => {
                 body: JSON.stringify({ itemId }), 
                 credentials: "include",
             });
-
             const data = await response.json();
-    
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}, Response: ${data}`);
             }
-    
             // Remove item from state after delete
             setCartItems(cartItems.filter(item => item._id !== itemId));
     
@@ -63,13 +54,34 @@ const BlackScreen = () => {
             console.log("Fetch Error:", error);
         }
     };
-    
-
+    //checkout cart items
+    const handleCheckout = async () => {
+        if (cartItems.length === 0) {
+            alert("No items in cart to checkout.");
+            return;
+        }
+        try {
+            const response = await fetch("http://localhost:3000/payment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ cartItems }),
+                credentials: "include",
+            });
+            const data = await response.json();
+            if (response.ok) {
+                window.location.href = data.url;
+            }
+        } catch (error) {
+            console.log("Fetch Error:", error);
+        }
+    };
+   
     useEffect(() => {
         gsap.fromTo(overlayRef.current, { y: "-100%" }, { y: "0%", duration: 1, ease: "power2.out" });
         handleCart();
     }, []);
-
     useEffect(() => {
         const newTotalPrice = cartItems.reduce((acc, item) => acc + (Number(item.price) || 0), 0);
         setTotalPrice(newTotalPrice);
@@ -77,27 +89,21 @@ const BlackScreen = () => {
     useEffect(()=>{
         handleCart();
     },[cartItems, setCartItems])
-
     const handleOverlayClick = () => {
         gsap.to(overlayRef.current, { y: "-100%", duration: 1, ease: "power2.in", onComplete: () => setOverlayVisible(false) });
         setOpen(!open)
         setShow(true)
         setTimeout(() => {
-            navigate('/profile');
-            
+        navigate('/profile');
         }, 990);
     };
-
     return (
         <div className="relative w-screen h-screen">
             {overlayVisible && (
-            
-
                 <div
                     ref={overlayRef}
                     className="fixed top-0 left-0 w-full h-full bg-black z-40 flex flex-col justify-center items-center text-white text-2xl font-bold cursor-pointer"
                 >
-
                     {/* Close button */}
                     <div className="absolute right-12 top-24" onClick={handleOverlayClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
@@ -107,10 +113,7 @@ const BlackScreen = () => {
                             </g>
                         </svg>
                     </div>
-
-                    {/* Cart Items */}
                     <div className="flex overflow-x-auto overflow-y-hidden -mt-6  hide-scrollbar w-full px-5 py-4">
-
                         <div className="flex flex-nowrap gap-5">
                             {cartItems.length > 0 ? (
                                 cartItems.map((item, index) => (
@@ -145,13 +148,11 @@ const BlackScreen = () => {
                         <hr className="w-screen h-[1px] bg-zinc-700 border-0 shadow-lg absolute top-[120px]" />
                         <hr className="w-screen h-[1px] bg-zinc-700 border-0 shadow-lg" />
                     </div>
-
                     <div className=" w-screen h-32 flex justify-between  mt-5 mb-5">
                         {/* Life is too short to wear boring clothes */}
                         <div>
                             <h1 className="ml-3">HAVE A GOOD DAY</h1>
                         </div>
-
                         <div className="flex flex-col items-end mr-4">
                             <h1 className="text-sm ">SHOPING CALCULATED AT CHECK-OUT</h1>
                             {cartItems.length > 0 && (
@@ -160,9 +161,12 @@ const BlackScreen = () => {
                                 </div>
                             )}
                             <div>
-                                <button className="border rounded-full w-[700px] mt-4 h-[70px] hover:bg-white hover:text-black transition  ">CHECKOUT</button>
+                                <button 
+                                className="border rounded-full w-[700px] mt-4 h-[70px] hover:bg-white hover:text-black transition"
+                                onClick={handleCheckout}
+                                >CHECKOUT
+                                </button>
                             </div>
-
                         </div>
                     </div>
                     <hr className="w-screen h-[1px] bg-zinc-700 border-0 shadow-lg  " />
@@ -178,12 +182,8 @@ const BlackScreen = () => {
                             </h1>
                         </div>
                     </div>
-
-
                 </div>
-
             )}
-
         </div>
     );
 };

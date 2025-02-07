@@ -7,6 +7,12 @@ const profile = require('./routes/profile.routes.js');
 const cartDetail = require('./routes/cartDetail.routes.js');
 const cookieParser = require('cookie-parser'); 
 const cartRemove = require('./routes/cartRemove.routes.js');
+const payment = require('./routes/payment.routes.js'); 
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+
+// console.log(process.env.STRIPE_SECRET_KEY)
 
 const cors = require('cors');
 app.use(cors({
@@ -18,15 +24,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+
 app.use('/login',login);
 app.use('/signup',signup);
 app.use('/home',home);
 app.use('/profile',profile);
 app.use('/cartRemove',cartRemove);
 app.use('/api',cartDetail);
+app.use('/payment',payment);
 
-
-const PORT = process.env.PORT || 3000;
 app.listen(3000 , () => {
   console.log('Server is running on port 3000');
 })

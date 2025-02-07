@@ -15,6 +15,8 @@ import Cart from "./components/RoutesComponents/Cart";
 import Menu from "./components/header/Menu";
 import BgChangeCard from "./components/componets/BgChangeCard";
 import StorePage from "./components/store/StorePage";
+import Cancel from "./components/payment/Cancel";
+import SuccessPage from "./components/payment/SuccessPage";
 
 const App = () => {
   const [show, setShow] = useState(true); 
@@ -53,6 +55,8 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/usercart" element={<Cart />} />
           <Route path="/shop" element={<StorePage />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/cancel" element={<Cancel/>} />
         </Routes>
         </div>
       </Router>
