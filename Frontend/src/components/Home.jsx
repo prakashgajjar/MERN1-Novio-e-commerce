@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import Navbar from "./header/Navbar";
 import Text from "./header/Text";
 import Video from "./header/video";
 import CardCollection from "./header/CardCollection";
@@ -10,13 +9,9 @@ import Footer from "./footer/Footer";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ThemeContext from "../../ContextProvider";
-import Menu from "./header/Menu";
-
+import ThemeContext from "../../ContextProvider"; 
 gsap.registerPlugin(ScrollTrigger);
-
 const Home = () => {
-  // const navbarRef = useRef(null);
   const videoRef = useRef(null);
   const smallTextRef = useRef(null);
   const smallText2Ref = useRef(null);
@@ -25,9 +20,7 @@ const Home = () => {
   const card2Ref = useRef(null);
   const footerRef = useRef(null);
   const mainRef = useRef(null);
-
   useGSAP(() => {
-
     gsap.from(videoRef.current, {
       y: -10,
       opacity: 0,
@@ -43,10 +36,9 @@ const Home = () => {
         start: "top 70%",
         end: "top 10%",
         once: true, // Run only once
-        toggleActions: "play none none none", // Prevent reverse animation
+        toggleActions: "play none none none",
       },
     });
-
     gsap.from(smallText2Ref.current, {
       opacity: 0,
       duration: 0.3,
@@ -58,7 +50,6 @@ const Home = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(bannerRef.current, {
       opacity: 0,
       duration: 0.3,
@@ -70,7 +61,6 @@ const Home = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(card2Ref.current, {
       opacity: 0,
       duration: 0.3,
@@ -82,7 +72,6 @@ const Home = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(footerRef.current, {
       opacity: 0,
       duration: 0.3,
@@ -95,10 +84,7 @@ const Home = () => {
       },
     });
   }, []);
-
-  const {show , setShow}  =useContext(ThemeContext);
   return (
-   
       <div ref={mainRef} className={` overflow-hidden`}>
         <div>
           <Text />

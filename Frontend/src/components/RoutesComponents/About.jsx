@@ -7,8 +7,6 @@ const About = () => {
 
   return (
     <div className={` relative w-full min-h-screen bg-[#f5f5f5] text-gray-900 overflow-hidden overflow-hidden`}>
-
-      {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-white">
         <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide">
           Fashion is Freedom
@@ -21,8 +19,6 @@ const About = () => {
           Discover More
         </button>
       </section>
-
-      {/* Brand Story */}
       <section className="w-full py-20 px-6 md:px-16 bg-white text-center">
         <h2 className="text-4xl font-bold uppercase tracking-wide">Our Story</h2>
         <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -31,8 +27,6 @@ const About = () => {
         </p>
         <p className="mt-6 text-lg font-semibold">Developed by Prakash Suthar</p> {/* Your name added here */}
       </section>
-
-      {/* Mission Section */}
       <section className="w-full py-20 px-6 md:px-16 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold uppercase tracking-wide">Our Mission</h2>
         <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -53,8 +47,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
       <section className="w-full py-20 px-6 md:px-16 bg-black text-white text-center">
         <h2 className="text-4xl font-bold uppercase tracking-wide">Join the Revolution</h2>
         <p className="mt-6 text-lg max-w-3xl mx-auto">
@@ -67,5 +59,4 @@ const About = () => {
     </div>
   );
 };
-
 export default About;

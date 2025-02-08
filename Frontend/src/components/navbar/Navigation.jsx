@@ -4,10 +4,8 @@ import ThemeContext from '../../../ContextProvider';
 const NavigationLinks = () => {
   const { show,setShow,open } = React.useContext(ThemeContext);
   const textRef = useRef();
-  
   useEffect(()=>{
     textRef.current.style.color = show? 'black' : 'white';
-
   })
   const changeShow = () => {
     setShow(true);
@@ -18,7 +16,6 @@ const NavigationLinks = () => {
       <li onClick={changeShow}>
             <NavLink
               to="/"
-           
             >
               HOME
             </NavLink>
@@ -26,7 +23,6 @@ const NavigationLinks = () => {
           <li onClick={changeShow}>
             <NavLink
               to="/shop"
-          
             >
               SHOP
             </NavLink>
@@ -34,7 +30,6 @@ const NavigationLinks = () => {
           <li onClick={changeShow}>
             <NavLink
               to="/about"
-            
             >
               ABOUT
             </NavLink>
@@ -42,13 +37,11 @@ const NavigationLinks = () => {
           <li onClick={changeShow}>
             <NavLink
               to="/contact"
-         
             >
               CONTACT
             </NavLink>
           </li>
-        </ul>
-      
+        </ul> 
     </div>
   );
 };

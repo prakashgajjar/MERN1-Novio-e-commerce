@@ -10,7 +10,6 @@ const BlackScreen = () => {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const { open, setOpen , setShow } = useContext(ThemeContext)
-
     //that api is retrive data of usercart 
     const handleCart = async () => {
         try {
@@ -27,7 +26,6 @@ const BlackScreen = () => {
             }
             const data = await response.json();
             setCartItems(data?.cart_items?.filter(item => Object.keys(item).length > 0) || []);
-
         } catch (error) {
             console.log("Fetch Error:", error);
         }
@@ -77,7 +75,6 @@ const BlackScreen = () => {
             console.log("Fetch Error:", error);
         }
     };
-   
     useEffect(() => {
         gsap.fromTo(overlayRef.current, { y: "-100%" }, { y: "0%", duration: 1, ease: "power2.out" });
         handleCart();
@@ -140,7 +137,7 @@ const BlackScreen = () => {
                                     </div>
                                 ))
                             ) : (
-                                <p className="text-white text-lg">No items in cart.</p>
+                                <p className="text-white text-sm">NO ITEM IN CARD.</p>
                             )}
                         </div>
                     </div>

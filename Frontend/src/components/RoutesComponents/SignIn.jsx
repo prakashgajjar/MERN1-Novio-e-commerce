@@ -20,12 +20,10 @@ const OrderStatus = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-
     if (!email || !password) {
       setErrorMessage('Both email and password are required.');
       return;
     }
-
     try {
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
@@ -35,10 +33,7 @@ const OrderStatus = () => {
         body: JSON.stringify({ email, password }),
         credentials: 'include', 
       });
-
-      
       const data = await response.json();
-
       if (response.ok) {
         console.log('Cookies should be set in the browser now.');
        await navigate('/');
@@ -49,17 +44,14 @@ const OrderStatus = () => {
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
-
   //  sign-up request
   const handleSignUp = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-
     if (!email || !password || !username || !First_name || !Last_name) {
       setErrorMessage('All fields are required.');
       return;
     }
-
     try {
       const response = await fetch('http://localhost:3000/signup', {
         method: 'POST',
@@ -69,9 +61,7 @@ const OrderStatus = () => {
         body: JSON.stringify({ username, email, password,First_name , Last_name }),
         credentials: 'include', 
       });
-
       const data = await response.json();
-
       if (response.ok) {
         navigate('/');
         alert('Sign Up successful!');
@@ -82,7 +72,6 @@ const OrderStatus = () => {
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
-
   return (
     <div className={`overflow-hidden`}>      
 <div className="h-screen flex justify-center items-start relative z-0"> 

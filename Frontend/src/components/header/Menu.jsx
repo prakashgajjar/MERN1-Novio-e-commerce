@@ -6,33 +6,27 @@ import gsap from "gsap";
 const Menu = () => {
     const { show ,setShow } = useContext(ThemeContext);
     const menuRef = useRef(null);
-
-
-
     useEffect(() => {
         if (menuRef.current) {
             if (show) {
                 gsap.to(menuRef.current, {
                     y: "-100%",
-                    duration: 0.8,
+                    duration: 0.3,
                     ease: "power2.out",
                 });
             } else {
                 gsap.to(menuRef.current, {
                     y: '0%',
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: "power2.in",
                 });
-            }
-        }
+            }}
     }, [show]);
-
     return (
         <div
             ref={menuRef}
             className=" w-full h-screen bg-black text-white flex justify-center items-center "
         >   
-
             <div className="absolute left-6 bottom-6 ">
                 <div className="mb-10 text-sm opacity-35">
                     <h1>CONNECT WITH US</h1>
@@ -44,9 +38,6 @@ const Menu = () => {
                         <li><NavLink to='/'>Twitter</NavLink></li>
                         <li><NavLink to='/'>LinkedIn</NavLink></li>
                         <li><NavLink to='/'>YouTube</NavLink></li>
-                    
-
-
                     </ul>
                 </nav>
             </div>
@@ -65,7 +56,6 @@ const Menu = () => {
                     </ul>
                 </nav>
             </div>
-
         </div>
     );
 };

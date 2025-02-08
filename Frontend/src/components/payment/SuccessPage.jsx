@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-
-
 export default function SuccessPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-400 to-blue-500 text-white p-4">
@@ -21,7 +19,6 @@ export default function SuccessPage() {
       >
         Success!
       </motion.h1>
-
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

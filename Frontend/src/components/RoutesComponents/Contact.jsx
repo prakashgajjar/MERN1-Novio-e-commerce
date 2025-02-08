@@ -5,7 +5,6 @@ import Footer1 from '../footer/Footer1';
 
 const Contact = () => {
   const { show } = useContext(ThemeContext);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,17 +18,12 @@ const Contact = () => {
       [name]: value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
   };
-
   return (
     <div className={`relative w-full bg-[#f5f5f5] text-gray-900  overflow-hidden ${show ? "h-full" : "h-screen"}`}>
-
-
-      {/* Hero Section */}
      <div className=''>
      <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-white ">
         <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide">
@@ -39,16 +33,12 @@ const Contact = () => {
           We would love to hear from you! Whether you have a question, suggestion, or just want to say hi.
         </p>
       </section>
-
-      {/* Contact Form */}
       <section className="w-full py-20 px-6 md:px-16 bg-white text-center">
         <h2 className="text-4xl font-bold uppercase tracking-wide">Contact Us</h2>
         <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
           Feel free to reach out to us for any inquiries or support. We are here to help you!
         </p>
-
         <form onSubmit={handleSubmit} className="mt-8 max-w-2xl mx-auto space-y-6">
-          {/* Name Input */}
           <div>
             <label htmlFor="name" className="block text-lg font-semibold text-left">
               Name
@@ -64,8 +54,6 @@ const Contact = () => {
               placeholder="Your Name"
             />
           </div>
-
-          {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-lg font-semibold text-left">
               Email
@@ -81,8 +69,6 @@ const Contact = () => {
               placeholder="Your Email"
             />
           </div>
-
-          {/* Message Input */}
           <div>
             <label htmlFor="message" className="block text-lg font-semibold text-left">
               Message
@@ -98,8 +84,6 @@ const Contact = () => {
               placeholder="Your Message"
             />
           </div>
-
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full mt-6 px-8 py-3 text-lg font-semibold uppercase border border-gray-900 hover:bg-gray-900 hover:text-white transition"
@@ -108,8 +92,6 @@ const Contact = () => {
           </button>
         </form>
       </section>
-
-      {/* Footer Section */}
      <Footer1/>
      </div>
     </div>

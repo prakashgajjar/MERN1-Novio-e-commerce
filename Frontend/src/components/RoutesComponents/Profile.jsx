@@ -11,8 +11,6 @@ const ProfilePage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
- 
-
 const showAlert = () => {
     Swal.fire({
         title: "Login Required!",
@@ -25,10 +23,6 @@ const showAlert = () => {
         timer: 2200,
     });
 };
-
-
-
-
   const {data , setData} = useContext(ThemeContext)
   // Improved handleProfile function
   const handleProfile = async () => {
@@ -37,7 +31,6 @@ const showAlert = () => {
         method: "GET",
         credentials: "include",
       });
-
       const data = await response.json();
       setData([data]);
       // console.log(data);
@@ -56,22 +49,12 @@ const showAlert = () => {
       setErrorMessage("An error occurred. Please try again.");
     }
   };
-
-
-
-
   useEffect(() => {
     handleProfile();
-
   }, []);
-
   const { show , open , setOpen , setShow } = useContext(ThemeContext);
-
   return (
     <div className={`overflow-hidden  ${show ? "h-full" : "h-screen"}`}>
-        {/* <div >
-                  { <Cart />}
-                </div> */}
       <div className={` flex h-screen flex-col bg-white text-black  overflow-hidden`}>
 
         <div className="bg-gradient-to-r from-gray-500 to-gray-400 text-white text-center py-24 mt-24 shadow-lg relative">
@@ -80,7 +63,6 @@ const showAlert = () => {
             <p className="text-lg mt-4 opacity-90"></p>
           </div>
         </div>
-
         <div className="flex ml-[400px]">
           {/* Sidebar */}
           <div className="w-64 border-r-2 border-gray-300 p-6 fixed mt-20">
@@ -117,18 +99,12 @@ const showAlert = () => {
                navigate('/usercart')
                setOpen(true);
                setShow(false);
-               set
-
                 }}
               >
               Your Cart
-
-
               </li>
             </ul>
           </div>
-
-          {/* Content Section */}
           <div className="p-10 flex-1 ml-96">
             {activeTab === "myAccount" ? (
               <>
@@ -149,14 +125,12 @@ const showAlert = () => {
                     Edit
                   </button>
                 </div>
-
                 <div className="mt-10 space-y-6">
                   <h2 className="text-md font-semibold">Address book</h2>
                   <button className="border border-black border-2 hover:bg-black hover:text-white transition duration-75 px-[100px] py-2 rounded-md">
                     Add address
                   </button>
                 </div>
-
                 <div className="mt-10 space-y-6">
                   <h2 className="text-md font-semibold">Payment</h2>
                   <button className="border border-black border-2 hover:bg-black hover:text-white transition duration-75 px-[96px] py-2 rounded-md">
@@ -184,13 +158,9 @@ const showAlert = () => {
                 <h2 className="text-xl font-semibold">Your Cart</h2>
                 <p className="mt-5">we managed your Card in other route so no wory about that !</p>
               </>
-            )
-
-            }
-
+            )}
           </div>
         </div>
-
       </div >
       <div className="">
         <Footer />

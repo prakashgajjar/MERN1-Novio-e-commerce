@@ -5,7 +5,6 @@ const Novio = () => {
   const text1Ref = useRef();
   useEffect(()=>{
     text1Ref.current.style.color = show? 'black' : 'white';
-  
   })
   return (
     <div ref={text1Ref} id="Novio" className='flex justify-center items-center ml-14'>

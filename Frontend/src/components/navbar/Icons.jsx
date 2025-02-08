@@ -6,15 +6,12 @@ import { NavLink } from 'react-router-dom';
 const Icons = () => {
     const { show, setShow , open } = useContext(ThemeContext);
     const iconRef = useRef(null);
-
     const handleToggle = () => {
         setShow(!show);
     };
     const changeShow = () => {
         setShow(true);
     }
-
-    // Animate SVG to cross smoothly
     useEffect(() => {
         if (iconRef.current) {
             const tl = gsap.timeline();
@@ -48,8 +45,7 @@ const Icons = () => {
                         ease: 'power2.out',
                         delay: -0.3,
                     });
-            }
-        }
+                }}
     }, [show]);
 
     return (
@@ -66,7 +62,6 @@ const Icons = () => {
                     </svg>
                 </li>
                 <li onClick={changeShow}><NavLink to = '/profile'><img className="w-5 h-5" src="/icons/shopping-cart.png" alt="Shopping Cart Icon" /></NavLink>
-
                 </li>
             </ul>
         </div>
