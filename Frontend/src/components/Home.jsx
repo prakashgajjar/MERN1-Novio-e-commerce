@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import Text from "./header/Text";
-import Video from "./header/video";
+// import Video from "./header/video";
 import CardCollection from "./header/CardCollection";
 import SmallText from "./componets/SmallText";
 import MidBanner from "./componets/MidBanner";
@@ -21,12 +21,12 @@ const Home = () => {
   const footerRef = useRef(null);
   const mainRef = useRef(null);
   useGSAP(() => {
-    gsap.from(videoRef.current, {
-      y: -10,
-      opacity: 0,
-      delay: 1.6,
-      duration: 0.3,
-    });
+    // gsap.from(videoRef.current, {
+    //   y: -10,
+    //   opacity: 0,
+    //   delay: 1.6,
+    //   duration: 0.3,
+    // });
 
     gsap.from(smallTextRef.current, {
       opacity: 0,
@@ -89,9 +89,9 @@ const Home = () => {
         <div>
           <Text />
         </div>
-        <div ref={videoRef} className="relative z-10">
+        {/* <div ref={videoRef} className="relative z-10">
           <Video />
-        </div>
+        </div> */}
         <div ref={smallTextRef}>
           <SmallText name="Excellence for 2025" />
         </div>
